@@ -2,7 +2,7 @@
 <calculation>
     <push value="5" />
     <push value="2" />
-    <operation value="-" />
+    <operation value="*" />
     <push value="Result" />
     <push value="3" />
     <operation value="+" />

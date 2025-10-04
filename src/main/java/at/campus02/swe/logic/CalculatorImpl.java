@@ -13,6 +13,10 @@ public class CalculatorImpl implements Calculator {
     @Override
     public double perform(Operation op) throws CalculatorException {
 
+        if (stack_.size() < 2) {
+            throw new CalculatorException("Not enough numbers on stack");
+        }
+
         double b = pop();
         double a = pop();
 
