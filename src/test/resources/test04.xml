@@ -5,5 +5,5 @@
     <operation value="-" />
     <push value="Result" />
     <push value="3" />
-    <operation value="*" />
+    <operation value="+" />
 </calculation>
