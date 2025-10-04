@@ -29,6 +29,23 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testSimpleModuloOperation() throws Exception {
+
+        //setup
+        Calculator calc = new CalculatorImpl();
+
+        //execute
+        calc.push(2.0);
+        calc.push(3);
+        double result = calc.perform(Operation.mod);
+
+        //verify
+        assertEquals(2, result, 0);
+
+
+    }
+
+    @Test
     public void testSimpleMulOperation() throws Exception {
 
         Calculator calc = new CalculatorImpl();
