@@ -13,7 +13,6 @@ public class CalculatorTest {
 
     @Test
     public void testSimpleAddOperation() throws Exception {
-
         //setup
         Calculator calc = new CalculatorImpl();
 
@@ -24,13 +23,10 @@ public class CalculatorTest {
 
         //verify
         assertEquals(5, result, 0);
-
-
     }
 
     @Test
     public void testSimpleModuloOperation() throws Exception {
-
         //setup
         Calculator calc = new CalculatorImpl();
 
@@ -41,9 +37,21 @@ public class CalculatorTest {
 
         //verify
         assertEquals(2, result, 0);
-
-
     }
+
+    @Test
+    public void testOperationWithTooFewOperands() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.push(5);
+            calc.perform(Operation.add);
+
+            fail("Exception expected because of too few operands");
+        } catch (CalculatorException e) {
+            assertEquals("Not enough numbers on stack", e.getMessage());
+        }
+    }
+
 
     @Test
     public void testSimpleMulOperation() throws Exception {
@@ -68,10 +76,6 @@ public class CalculatorTest {
         assertEquals(3, result, 0);
 
     }
-
-
-
-
 
     //
     @Test(expected = CalculatorException.class)
