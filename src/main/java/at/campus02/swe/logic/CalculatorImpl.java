@@ -17,6 +17,10 @@ public class CalculatorImpl implements Calculator {
             throw new CalculatorException("Not enough numbers on stack");
         }
 
+        if (op == Operation.dotproduct) {
+            return findScalarProduct();
+        }
+
         double b = pop();
         double a = pop();
 
@@ -36,6 +40,31 @@ public class CalculatorImpl implements Calculator {
                 return a % b;
         }
         return 0;
+    }
+
+    private double findScalarProduct() throws CalculatorException {
+        int n = (int) pop();
+
+        if (n <= 0) {
+            throw new CalculatorException("Vector size must be positive");
+        }
+
+        if (stack_.size() < 2 * n) {
+            throw new CalculatorException("Not enough numbers on stack for dot product");
+        }
+
+        double[] bVector = new double[n];
+        double[] aVector = new double[n];
+
+        for (int i = n - 1; i >= 0; i--) bVector[i] = pop();
+        for (int i = n - 1; i >= 0; i--) aVector[i] = pop();
+
+        double result = 0;
+
+        for (int i = 0; i < n; i++) result += aVector[i] * bVector[i];
+
+        push(result);
+        return result;
     }
 
     @Override
