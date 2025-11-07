@@ -17,8 +17,17 @@ public class CalculatorImpl implements Calculator {
             throw new CalculatorException("Not enough numbers on stack");
         }
 
-        double b = pop();
+        switch (op){
+            case sin:
+                return Math.sin(pop());
+
+            case cos:
+                double a2 = pop();
+                return Math.cos(pop());
+        }
+
         double a = pop();
+        double b = pop();
 
         switch (op) {
             case add:
