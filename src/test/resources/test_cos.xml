@@ -1,0 +1,4 @@
+<calculation>
+    <push value="1.0"/>
+    <operation value="cos"/>
+</calculation>
