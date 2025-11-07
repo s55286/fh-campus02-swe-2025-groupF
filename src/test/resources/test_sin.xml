@@ -1,0 +1,4 @@
+<calculation>
+    <push value="0.5"/>
+    <operation value="sin"/>
+</calculation>
