@@ -13,9 +13,14 @@ public class CalculatorImpl implements Calculator {
     @Override
     public double perform(Operation op) throws CalculatorException {
 
-        if (stack_.size() < 2) {
-            throw new CalculatorException("Not enough numbers on stack");
+        if (op == Operation.sin || op == Operation.cos) {
+            if (stack_.size() < 1)
+                throw new CalculatorException("Not enough numbers on stack");
+            return (op == Operation.sin) ? Math.sin(pop()) : Math.cos(pop());
         }
+
+        if (stack_.size() < 2)
+            throw new CalculatorException("Not enough numbers on stack");
 
         if (op == Operation.dotproduct) {
             return findScalarProduct();
