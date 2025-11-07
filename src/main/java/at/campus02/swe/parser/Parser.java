@@ -80,7 +80,10 @@ public class Parser {
             return Operation.sub;
         else if ("%".equals(value))
             return Operation.mod;
-
+        else if ("sin".equalsIgnoreCase(value) || "sinus".equalsIgnoreCase(value))
+            return Operation.sin;
+        else if ("cos".equalsIgnoreCase(value) || "cosinus".equalsIgnoreCase(value))
+            return Operation.cos;
 
         throw new CalculatorException("Unsupported Operation");
     }
