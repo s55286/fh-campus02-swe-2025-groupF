@@ -84,6 +84,8 @@ public class Parser {
             return Operation.sin;
         else if ("cos".equalsIgnoreCase(value) || "cosinus".equalsIgnoreCase(value))
             return Operation.cos;
+        else if ("dotproduct".equalsIgnoreCase(value) || "scalarproduct".equalsIgnoreCase(value))
+            return Operation.dotproduct;
 
         throw new CalculatorException("Unsupported Operation");
     }
