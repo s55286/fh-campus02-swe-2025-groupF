@@ -144,4 +144,45 @@ public class CalculatorTest {
         }
     }
 
+    @Test
+    public void testDotProductTwoElements() throws CalculatorException {
+        Calculator calc = new CalculatorImpl();
+        calc.push(1); // a1
+        calc.push(3); // a2
+        calc.push(2); // b1
+        calc.push(4); // b2
+        calc.push(2); // n
+        double result = calc.perform(Operation.dotproduct);
+        assertEquals(14.0, result, 0);
+    }
+
+    @Test
+    public void testDotProductThreeElements() throws CalculatorException {
+        Calculator calc = new CalculatorImpl();
+        calc.push(1); // a1
+        calc.push(2); // a2
+        calc.push(3); // a3
+        calc.push(4); // b1
+        calc.push(5); // b2
+        calc.push(6); // b3
+        calc.push(3); // n
+        double result = calc.perform(Operation.dotproduct);
+        assertEquals(32.0, result, 0); // 1*4 + 2*5 + 3*6 = 32
+    }
+
+    @Test
+    public void testDotProductInvalidN() throws CalculatorException {
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.push(1);
+            calc.push(2);
+            calc.push(-1); // invalid n
+            calc.perform(Operation.dotproduct);
+            fail("Expected CalculatorException for invalid vector size");
+        } catch (CalculatorException e) {
+            assertEquals("Vector size must be positive", e.getMessage());
+        }
+    }
+
+
 }

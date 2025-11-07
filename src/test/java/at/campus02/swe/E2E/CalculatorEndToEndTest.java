@@ -31,4 +31,17 @@ public class CalculatorEndToEndTest {
         double result = parser.parse(new File("src/test/resources/test04.xml"));
         assertEquals(13.0, result, 0);
     }
+
+    @Test
+    public void testEnd2EndDotProductFourElements() throws CalculatorException, XMLStreamException, FileNotFoundException {
+        Calculator calc = new CalculatorImpl();
+        Parser parser = new Parser(calc);
+
+        double result = parser.parse(new File("src/test/resources/dotProduct/dotproduct_end2end.xml"));
+
+        // Erwartetes Ergebnis: 1*2 + 3*4 + 5*6 + 7*8 = 2 + 12 + 30 + 56 = 100
+        assertEquals(100.0, result, 0);
+    }
+
+
 }
