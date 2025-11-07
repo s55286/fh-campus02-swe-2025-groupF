@@ -105,4 +105,43 @@ public class CalculatorTest {
         }
 
     }
+
+    @Test
+    public void testSimpleSinOperation() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(Math.PI / 2);
+        double result = calc.perform(Operation.sin);
+        assertEquals(1.0, result, 1e-9);
+    }
+
+    @Test
+    public void testSimpleCosOperation() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(0);
+        double result = calc.perform(Operation.cos);
+        assertEquals(1.0, result, 1e-9);
+    }
+
+    @Test
+    public void testSinWithTooFewOperands() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.perform(Operation.sin);
+            fail("Exception expected because of too few operands");
+        } catch (CalculatorException e) {
+            assertEquals("Not enough numbers on stack", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testCosWithTooFewOperands() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.perform(Operation.cos);
+            fail("Exception expected because of too few operands");
+        } catch (CalculatorException e) {
+            assertEquals("Not enough numbers on stack", e.getMessage());
+        }
+    }
+
 }
