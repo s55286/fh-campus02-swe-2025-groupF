@@ -38,6 +38,10 @@ public class CalculatorImpl implements Calculator {
                 return a * b;
             case mod:
                 return a % b;
+            case sin:
+                return Math.sin(pop());
+            case cos:
+                return Math.cos(pop());
         }
         return 0;
     }
